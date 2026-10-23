@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TV Energy Charts</title>
+  
+  <!-- Link to the CSS stylesheet for styling the charts -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>TV Energy Charts</h1>
+
+  <h2>Which screen type uses the most energy? (55-inch TVs)</h2>
+  
+  <!-- Container for the Bar Chart (Exercise 5.1) -->
+  <div id="bar-chart" class="responsive-svg-container"></div>
+  
+  <!-- Container for the Line Chart (Exercise 5.2) -->
+  <div id="line-chart"></div>
+
+  <!-- Container for the Donut Chart (Exercise 5.3) - THIS WAS MISSING -->
+  <div id="donut-chart"></div>
+
+  <!-- IMPORTANT: Load the D3.js library FIRST before loading any custom scripts -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  
+  <!-- Load custom chart scripts AFTER D3 is fully loaded -->
+  <script src="js/bar-chart.js"></script>
+  <script src="js/line-chart.js"></script>
+  <script src="js/donut-chart.js"></script>
+</body>
+</html>
