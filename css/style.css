@@ -1,0 +1,139 @@
+* { box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0; background: #f8f9fa; color: #333; line-height: 1.6;
+  min-height: 100vh; display: flex; flex-direction: column;
+}
+h1, h2, h3 { color: #2c3e50; margin-top: 0; }
+main { flex: 1; }
+
+.container {
+  max-width: 900px; margin: 30px auto; padding: 24px;
+  background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px;
+}
+
+/* Navigation */
+.navbar { display: flex; align-items: center; background: #333; padding: 10px 20px; }
+.navbar .logo { height: 44px; margin-right: auto; display: block; }
+.navbar a.nav-link {
+  color: white; text-decoration: none; padding: 12px 20px; font-weight: bold;
+  border-bottom: 3px solid transparent; transition: background 0.3s;
+}
+.navbar a.nav-link:hover { background: #555; color: #f1c40f; }
+.navbar a.active { border-bottom-color: #f1c40f; color: #f1c40f; }
+
+/* Hero and stat cards */
+.hero { background: #333; color: white; padding: 40px 20px 70px; text-align: center; }
+.hero h1 { color: white; font-size: 2.3rem; margin-bottom: 8px; }
+.hero p { color: #ddd; max-width: 560px; margin: 0 auto; }
+.stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  max-width: 900px; margin: -45px auto 0; padding: 0 20px;
+}
+.stat-card {
+  background: white; border-radius: 8px; padding: 18px; text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12); border-top: 5px solid #f1c40f;
+}
+.stat-card .num { display: block; font-size: 2rem; font-weight: 800; color: #2c3e50; }
+.stat-card .label { font-size: 0.9rem; color: #666; }
+
+/* FAQ accordion */
+.accordion {
+  background: #eee; color: #444; cursor: pointer; padding: 18px; width: 100%;
+  text-align: left; border: none; outline: none; transition: 0.3s;
+  font-size: 16px; font-weight: bold; margin-top: 10px;
+  display: flex; justify-content: space-between;
+}
+.accordion::after { content: "+"; font-size: 20px; line-height: 1; }
+.active-accordion, .accordion:hover { background: #ddd; }
+.active-accordion::after { content: "\2212"; }
+.panel { display: none; padding: 4px 18px; background: white; border-left: 3px solid #f1c40f; }
+.panel.open { display: block; }
+
+/* Calculator */
+.calculator-box {
+  background: #f1f8ff; padding: 20px; border-radius: 6px;
+  border: 1px solid #cce5ff; margin-top: 24px;
+}
+.input-group { margin-bottom: 14px; }
+.input-group label { display: inline-block; width: 180px; font-weight: bold; }
+.input-group input { padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 200px; }
+.input-group input.invalid { border-color: #c0392b; background: #fdf1f0; }
+button.calc-btn {
+  padding: 10px 22px; background: #28a745; color: white; border: none;
+  border-radius: 4px; cursor: pointer; font-size: 16px;
+}
+button.calc-btn:hover { background: #218838; }
+.error-message { color: #c0392b; font-size: 14px; margin-top: 10px; display: none; }
+
+#results-panel { display: none; margin-top: 20px; }
+.result-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.result-card { background: white; border-radius: 6px; padding: 14px; text-align: center; border: 1px solid #e3e3e3; }
+.result-card strong { display: block; font-size: 1.5rem; color: #2c3e50; }
+.result-card span { font-size: 0.85rem; color: #666; }
+.result-card.cost { background: #333; border-color: #333; }
+.result-card.cost strong { color: #f1c40f; }
+.result-card.cost span { color: #ccc; }
+
+/* Column chart for cumulative cost */
+.chart-title { margin: 22px 0 6px; font-weight: bold; }
+.chart {
+  display: flex; align-items: flex-end; gap: 6px; height: 170px;
+  padding: 10px 8px 0; background: white; border: 1px solid #e3e3e3; border-radius: 6px;
+}
+.chart .col { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
+.chart .bar { width: 100%; background: #f1c40f; border-radius: 3px 3px 0 0; min-height: 2px; transition: height 0.4s; }
+.chart .col:last-child .bar { background: #333; }
+.chart .val { font-size: 0.7rem; color: #555; }
+.chart .month { font-size: 0.75rem; color: #777; padding: 4px 0; }
+
+/* Horizontal bars on the Televisions page */
+.hbars { margin: 18px 0; }
+.hbar-row { display: grid; grid-template-columns: 210px 1fr; gap: 12px; align-items: center; margin: 8px 0; font-size: 0.92rem; }
+.hbar-track { background: #eee; border-radius: 4px; height: 26px; overflow: hidden; }
+.hbar-fill { height: 100%; background: #999; color: white; font-weight: bold; font-size: 0.8rem; line-height: 26px; padding-left: 8px; white-space: nowrap; }
+.hbar-fill.good { background: #28a745; }
+.hbar-fill.warn { background: #c0392b; }
+
+/* Data story */
+img.story-img { max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; margin: 12px 0 4px; }
+figcaption { font-size: 0.9rem; color: #666; margin-bottom: 12px; }
+.insight { background: #fff8db; border-left: 4px solid #f1c40f; padding: 10px 14px; border-radius: 4px; }
+.conclusion { background: #333; color: white; padding: 16px 18px; border-radius: 6px; }
+.conclusion strong { color: #f1c40f; }
+
+/* Recommended TV cards */
+.tv-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+.tv-card {
+  position: relative; background: white; border: 2px solid #e3e3e3;
+  border-radius: 8px; padding: 46px 18px 18px; text-align: center;
+}
+.tv-card.best { border-color: #f1c40f; }
+.tv-badge {
+  position: absolute; top: 12px; left: 12px; background: #f1c40f;
+  color: #333; font-size: 0.8rem; font-weight: bold; padding: 3px 10px; border-radius: 12px;
+}
+.tv-badge.alt { background: #333; color: white; }
+.tv-img { display: block; width: 100%; max-width: 100%; height: 180px; object-fit: contain; margin: 0 auto 10px; }
+.tv-card h3 { margin: 6px 0 10px; }
+.tv-specs { list-style: none; margin: 0; padding: 0; color: #555; }
+.tv-specs li { padding: 3px 0; }
+.tv-specs strong { color: #2c3e50; }
+
+/* Footer */
+footer { text-align: center; padding: 18px; background: #333; color: white; margin-top: 40px; font-size: 0.9rem; }
+footer p { margin: 3px 0; }
+
+@media (max-width: 640px) {
+  .stats { grid-template-columns: 1fr; }
+  .tv-cards { grid-template-columns: 1fr; }
+  .input-group label { display: block; margin-bottom: 4px; }
+  .hbar-row { grid-template-columns: 1fr; gap: 2px; }
+  .navbar a.nav-link { padding: 10px 10px; font-size: 0.9rem; }
+}
+.responsive-svg-container {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    max-width: 1200px;
+}
